@@ -31,7 +31,17 @@ def kmeans_pp(X, k):
     return np.array(centroids)
 
 # 示例
-X = np.array([[1, 2], [2, 2], [2, 3], [8, 7], [8, 8], [25, 30]])
-k = 2
-centroids = kmeans_pp(X, k)
-print(centroids)
+def k_means_pp_example():
+    X = np.array([[1, 2], [2, 2], [2, 3], [8, 7], [8, 8], [25, 30]])
+    k = 2
+    centroids = kmeans_pp(X, k)
+    print(centroids)
+
+import pandas as pd
+from sklearn.cluster import KMeans
+
+def kmeans(data, n_clusters, seed = 0):
+    kmeans = KMeans(n_clusters=n_clusters, init="k-means++", random_state=seed)
+    kmeans.fit(data)
+    sample_clusters = kmeans.labels_
+    return sample_clusters
